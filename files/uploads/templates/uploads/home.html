@@ -1,0 +1,14 @@
+{% extends 'uploads/base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <button class="btn btn-success">Hello world</button>
+        <a href="{% url 'upload_file'%}">Upload Files</a>
+        <a href="{% url 'fileslist'%}">View Files</a>
+
+        
+
+    </div>
+{% endblock %}
