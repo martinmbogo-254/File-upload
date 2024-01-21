@@ -36,3 +36,8 @@
     border-radius: 50%;
  
 }
+.dets-profile{
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+}

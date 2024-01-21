@@ -1,6 +1,18 @@
-{% extends 'uploads/base.html'%} 
-<html>
-{% block content%}
+{% extends 'uploads/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<head>
+    <link rel="shortcut icon" href="https://icon-library.com/images/inventory-management-icon/inventory-management-icon-0.jpg" type="image/x-icon" />
+
+    <title>Files System</title>
+    
+    <link rel="stylesheet" href="{% static 'uploads/styles.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 <div class="container-fluid">
     <div class="navigation p-3">
         <nav class="navbar navbar-expand-lg navbar-dark bg-custom ">
@@ -43,8 +55,8 @@
             </div>
         </div>
         <div class="row ml-3">
-            <div class="col-md-7 ml-5 container">
-                <div class="card text-justify p-2  rounded shadow m-3">
+            <div class="col-md-7 ml-5 container p-3">
+                <div class="card text-justify p-5 rounded shadow m-3">
                     <p><span class="badge badge-pill badge-info  p-2">Name </span> {{client.name}}</p>
                     <p><span class="badge badge-pill badge-info  p-2">Mobile </span> {{client.mobile}}</p>
                     <p><span class="badge badge-pill badge-info  p-2">Vehicle Reg </span> {{client.veh_reg}}</p>
@@ -52,14 +64,11 @@
                 </div>
             </div>
             <div class="col-md-4 container-fluid">
-               
-               
-             
-            
+               <img class="dets-profile" src="{{client.profile_pic.url}}" alt="">
             </div>
     
         </div>
-        <div class=" bg-white col-md-10 shadow-lg rounded p-2 container-fluid feedback ">
+        <div class=" bg-white col-md-10 shadow-lg rounded p-2 container-fluid feedback mt-3 p-4">
             <p>Client Files</p>
             <p>Total Files: {{total_files}}</p>
     

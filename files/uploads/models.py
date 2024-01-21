@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
   
 class Client(models.Model):
-    name = models.CharField(max_length=255)
-    mobile= models.IntegerField(max_length = 12)
-    veh_reg = models.CharField(max_length=20)
+    name = models.CharField(max_length=255, unique=True)
+    mobile= models.IntegerField(max_length =12, unique=True)
+    veh_reg = models.CharField(max_length=20,unique=True)
     profile_pic = models.FileField(default='profile_imgs/default.png',upload_to='profile_imgs/')
 
     def __str__(self):

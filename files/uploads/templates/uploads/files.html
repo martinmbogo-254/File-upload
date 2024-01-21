@@ -62,7 +62,7 @@
 
                       <div class="card-body">
 
-                        {% comment %} {% if ".doc" in document.file.url %}
+                        {% if ".doc" in document.file.url %}
                         <img class="img-fluid h-50" src="https://play-lh.googleusercontent.com/gFABK_HVIVlHT1MhKw7q8YlQkdsJrdev7xtyHmbQHLiT9cjLUPSl4bTe0CsqMzI-69Y" alt="">
                         {% elif ".csv" in document.file.url  %}
                         <img class="img-fluid h-50" src="https://static.vecteezy.com/system/resources/previews/000/376/777/original/csv-vector-icon.jpg" alt="">
@@ -73,7 +73,7 @@
                         <p>{{document.file.url}}</p>
                         {% else %}
                         <img class="img-fluid h-50" src="https://play-lh.googleusercontent.com/9XKD5S7rwQ6FiPXSyp9SzLXfIue88ntf9sJ9K250IuHTL7pmn2-ZB0sngAX4A2Bw4w" alt="">
-                        {% endif %} {% endcomment %}
+                        {% endif %}
                        <p>{{ document.name}}</p>
                        <li>{{document.file}}</li>
                        <li>{{document.file1}}</li>

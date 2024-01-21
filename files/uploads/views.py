@@ -2,11 +2,23 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.views import LoginView
 from .forms import FileForm
 from .models import File,Client
+from django.db.models import Q
 
 def home(request):
-    clients = Client.objects.all()
+    # clients = Client.objects.all()
+    q= request.GET.get('q') if request.GET.get('q') != None else ""
+    clients = Client.objects.filter(
+        Q(name__icontains=q)|
+        Q(mobile__icontains=q)|
+        Q(veh_reg__icontains=q)
+        # Q(category__category_name__icontains=q)
+   
+        
+    )
+    total_clients = clients.count()
     context={
-        'clients': clients
+        'clients': clients,
+        'total_clients': total_clients
     }
     return render(request, 'uploads/home.html',context)
 
