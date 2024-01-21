@@ -1,11 +1,26 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.views import LoginView
 from .forms import FileForm
-from .models import File
+from .models import File,Client
 
 def home(request):
-    return render(request, 'uploads/home.html')
+    clients = Client.objects.all()
+    context={
+        'clients': clients
+    }
+    return render(request, 'uploads/home.html',context)
 
+def ClientDetail(request, pk):
+    client = Client.objects.get(id=pk)
+    files = File.objects.filter(client=client)
+    total_files = files.count()
+    context = {
+        'client': client,
+        'files': files,
+        'total_files':total_files
+     
+    }
+    return render(request, 'uploads/details.html', context)
 
 class CustomLoginView(LoginView):
     template_name = 'uploads/login.html'

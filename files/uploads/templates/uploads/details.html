@@ -1,0 +1,102 @@
+{% extends 'uploads/base.html'%} 
+<html>
+{% block content%}
+<div class="container-fluid">
+    <div class="navigation p-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-custom ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'home' %}">FMS</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse mr-0" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-0 mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin">Admin</a>
+                  </li>
+                 
+                 
+                </ul>
+               
+              </div>
+            </div>
+          </nav>
+    </div>
+    <div class="container">
+        <div class="row mt-3 ">
+            <div class="col-md-4">
+                <h4>User Details Page</h4>
+                <div class="container">
+                    <a href="{% url 'home'%}" class="nav-link"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                         Home</a>
+                </div>
+            </div>
+            <div class="col-md-4 "></div>
+            <div class="col-md-4">
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search by name,mobile,veh_reg" aria-label="Search">
+                    <button class="btn btn-custom my-2 my-sm-0" type="submit">Search</button>
+                  </form> -->
+            </div>
+        </div>
+        <div class="row ml-3">
+            <div class="col-md-7 ml-5 container">
+                <div class="card text-justify p-2  rounded shadow m-3">
+                    <p><span class="badge badge-pill badge-info  p-2">Name </span> {{client.name}}</p>
+                    <p><span class="badge badge-pill badge-info  p-2">Mobile </span> {{client.mobile}}</p>
+                    <p><span class="badge badge-pill badge-info  p-2">Vehicle Reg </span> {{client.veh_reg}}</p>
+    
+                </div>
+            </div>
+            <div class="col-md-4 container-fluid">
+               
+               
+             
+            
+            </div>
+    
+        </div>
+        <div class=" bg-white col-md-10 shadow-lg rounded p-2 container-fluid feedback ">
+            <p>Client Files</p>
+            <p>Total Files: {{total_files}}</p>
+    
+            {% for file in client.file.all %}
+            <div class="row ml-2">
+                <div class="container m-2 ml-3 p-2   col-md-8 mr-2 rounded bg-light shadow text-dark">
+                    <p>
+                        <span>
+                 </span>
+                        <span class=font-weight-bold>
+                 {{file.name}} </span>
+                        <span class="ml-5"><i class="fa fa-comments" aria-hidden="true"></i>
+                        </span>
+                        <div class=" container text-justify ">
+                            {{file.file.url}} <br>
+                        </div>
+                    </p>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            {% empty%}
+            <div class="text-center m-2 p-2">
+                <p>No files for this client Yet !!!.</p>
+    
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+
+</div>
+<!-- </div>
+<div class="container">
+    
+   
+   
+</div>
+</div>
+{% endblock content%} -->
+
+</html>

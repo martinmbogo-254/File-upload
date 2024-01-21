@@ -1,14 +1,102 @@
 {% extends 'uploads/base.html' %}
-
-{% block title %}Homepage{% endblock %}
+{% load static %}
 
 {% block content %}
-    <div class="container">
-        <button class="btn btn-success">Hello world</button>
-        <a href="{% url 'upload_file'%}">Upload Files</a>
-        <a href="{% url 'fileslist'%}">View Files</a>
+
+
+<head>
+    <link rel="shortcut icon" href="https://icon-library.com/images/inventory-management-icon/inventory-management-icon-0.jpg" type="image/x-icon" />
+
+    <title>Files System</title>
+    
+    <link rel="stylesheet" href="{% static 'uploads/styles.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<div class="body">
+      <div class="container-fluid">
+        <div class="navigation p-3">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-custom ">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">FMS</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse mr-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-0 mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                      </li>
+                     
+                     
+                    </ul>
+                   
+                  </div>
+                </div>
+              </nav>
+        </div>
+        <div class="container">
+            <div class="row mt-3 ">
+                <div class="col-md-4">
+                    <h4>User Manangement</h4>
+                </div>
+                <div class="col-md-4 "></div>
+                <div class="col-md-4">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search by name,mobile,veh_reg" aria-label="Search">
+                        <button class="btn btn-custom my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                </div>
+            </div>
+            <div class="row m-3 p-2">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <a class="btn btn-green nav-link" href="/admin/uploads/client/add/">Add More Clients</a>
+
+                </div>
+            </div>
+
+            <div class="container-fluid m-3 p-2">
+                <table class="table mt-5 p-4">
+                    <thead>
+                      <tr>
+                  <th>Profile Pic</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile </th>
+                        <th scope="col">Vehicle Reg</th>
+                        <th scope="col">Actions</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for client in clients %}
+
+                      <tr>
+                      <td><img class="profile-pic" src="{{client.profile_pic.url}}" alt=""></td>
+                        <td > {{client.name}}</td>
+                        <td>{{client.mobile}}</td>
+                        <td>{{client.veh_reg}}</td>
+                        <td>
+                            <a class="btn btn-custom nav-link" href="{% url 'detail' client.id %}">View More</a>
+                        </td>
+
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+       
+        
 
         
 
     </div>
+</div>
+  
 {% endblock %}
