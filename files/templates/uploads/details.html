@@ -1,0 +1,127 @@
+{% extends 'uploads/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <link rel="shortcut icon" href="https://icon-library.com/images/inventory-management-icon/inventory-management-icon-0.jpg" type="image/x-icon" />
+
+    <title>Files System</title>
+
+    <link rel="stylesheet" href="{% static 'uploads/styles.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<div class="container-fluid">
+    <div class="navigation p-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-custom ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}">FMS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mr-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-0 mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row mt-3 ">
+            <div class="col-md-4">
+                <h4>User Details Page</h4>
+                <div class="container">
+                    <a href="{% url 'home'%}" class="nav-link btn btn-custom"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Home</a>
+                </div>
+            </div>
+            <div class="col-md-4 "></div>
+            <div class="col-md-4">
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search by name,mobile,veh_reg" aria-label="Search">
+                    <button class="btn btn-custom my-2 my-sm-0" type="submit">Search</button>
+                  </form> -->
+            </div>
+        </div>
+        <div class="row prof-dets">
+            <div class="col-md-8 ">
+                <div class="text-justify p-5 m-3">
+                    <p><span class="badge badge-pill badge-info  p-2">Name </span> {{client.name}}</p>
+                    <p><span class="badge badge-pill badge-info  p-2">Mobile </span> {{client.mobile}}</p>
+                    <p><span class="badge badge-pill badge-info  p-2">Vehicle Reg </span> {{client.veh_reg}}</p>
+
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <img class="dets-profile" src="{{client.profile_pic.url}}" alt="">
+            </div>
+        </div>
+        <div class=" bg-white  shadow-lg rounded p-2 container-fluid feedback mt-3 ">
+            <p class="fw-bold p-2 m-3">CLIENT FILES</P>
+            <p class="fw-bold p-2 m-3">Total Files: {{ total_files }}</p>
+                    <div class="row container-fluid">
+                        {% for file in client.file.all %}
+
+                        <div class="col-md-4 client-files">
+                            <div class="card shadow-md  m-2">
+                                {% if ".doc" in file.file.url %}
+                                <a href="{{file.file.url}}">
+                                     <img class="img-responsive img-fluid h-50" src="https://play-lh.googleusercontent.com/gFABK_HVIVlHT1MhKw7q8YlQkdsJrdev7xtyHmbQHLiT9cjLUPSl4bTe0CsqMzI-69Y" alt="">
+                                </a>
+                                {% elif ".csv" in file.file.url  %}
+                                <a href="{{file.file.url}}">
+                                <img class="img-responsive img-fluid h-50" src="https://static.vecteezy.com/system/resources/previews/000/376/777/original/csv-vector-icon.jpg" alt="">
+                                </a>
+    
+                                {% elif ".xlsx" in file.file.url  %}
+                                <a href="{{file.file.url}}">
+                                <img class="img-responsive img-fluid" src="https://play-lh.googleusercontent.com/37EzETO6gZyKmCg2kBIFX1e9gkubxZrVa5fHJ6yOaa7VvEShHjKv2RdtwnZt9Sk258s" alt="">
+    
+                                </a>
+                                {% elif ".jpg" in file.file.url  %}
+                                <a href="{{file.file.url}}">
+                                     <img class="img-responsive img-fluid h-50" src="{{file.file.url}}" alt="">
+                               
+                                </a>
+                                {% elif ".png" in file.file.url  %}
+                                <a href="{{file.file.url}}">
+                                    <img class=" img-responsive img-fluid h-50" src="{{file.file.url}}" alt="">
+    
+                                </a>
+                                {% else %}
+                                <a href="{{file.file.url}}">
+                                <img class="img-responsive img-fluid h-50 " src="https://play-lh.googleusercontent.com/9XKD5S7rwQ6FiPXSyp9SzLXfIue88ntf9sJ9K250IuHTL7pmn2-ZB0sngAX4A2Bw4w" alt="">
+                                </a>
+                                {% endif %}
+                                <p class="font-weight-bold text-center m-3">{{ file.name }}</p>
+                                <a href="{{file.file.url}}" class="btn btn-green m-2 p-2 text-center" ><i class="fa-solid fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        {% empty%}
+                        <div class="text-center m-2 p-2">
+                            <p>No files for this client Yet !!!.</p>
+            
+                        </div>
+                        {% endfor%}
+                    </div>
+            
+            </div>
+    </div>
+</div>
+<!-- </div>
+<div class="container">
+
+
+</div>
+</div> -->
+{% endblock content%}
+
+</html>
