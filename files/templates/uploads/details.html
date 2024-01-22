@@ -27,9 +27,16 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">Admin</a>
-                        </li>
+                        {% if user.is_staff %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                      </li>
+                      {% endif %}
+                      {% if user.is_authenticated%}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
+                      </li>
+                     {% endif %}
                     </ul>
                 </div>
             </div>
@@ -72,6 +79,10 @@
 
                         <div class="col-md-4 client-files">
                             <div class="card shadow-md  m-2">
+                                {% if ".docx" in file.file.url %}
+                                <a href="{{file.file.url}}">
+                                     <img class="img-responsive img-fluid h-50" src="https://play-lh.googleusercontent.com/gFABK_HVIVlHT1MhKw7q8YlQkdsJrdev7xtyHmbQHLiT9cjLUPSl4bTe0CsqMzI-69Y" alt="">
+                                </a>
                                 {% if ".doc" in file.file.url %}
                                 <a href="{{file.file.url}}">
                                      <img class="img-responsive img-fluid h-50" src="https://play-lh.googleusercontent.com/gFABK_HVIVlHT1MhKw7q8YlQkdsJrdev7xtyHmbQHLiT9cjLUPSl4bTe0CsqMzI-69Y" alt="">
