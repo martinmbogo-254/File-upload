@@ -14,8 +14,8 @@ class Client(models.Model):
 
 class File(models.Model):
     client = models.ForeignKey(Client,on_delete=models.CASCADE,related_name='file')
-    name = models.CharField(max_length=255,blank=True)
-    file = models.FileField(upload_to='files/',blank=True)
+    name = models.CharField(max_length=255,blank=False)
+    file = models.FileField(upload_to='files/',blank=False)
     
     def __str__(self):
         return self.name

@@ -26,6 +26,10 @@
     color: white !important;
     background: #003032 !important;
 }
+.btn-green-outline{
+    border: 2px solid #003032 !important;
+    color: #003032 !important;
+}
 .bg-custom{
     background-color: #003032 !important;
     color: white !important;
@@ -40,4 +44,14 @@
     height: 300px;
     width: 300px;
     border-radius: 20px;
+}
+.file-img{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+}
+.file-card{
+    border: 2px solid #003032  ;
+    border-radius: 20px;
+
 }
