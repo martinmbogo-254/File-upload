@@ -4,7 +4,10 @@ from .forms import FileForm
 from .models import File,Client
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def home(request):
     # clients = Client.objects.all()
     q= request.GET.get('q') if request.GET.get('q') != None else ""
@@ -32,6 +35,7 @@ def home(request):
     }
     return render(request, 'uploads/home.html',context)
 
+@login_required
 def ClientDetail(request, pk):
     client = Client.objects.get(id=pk)
     files = File.objects.filter(client=client)
@@ -47,6 +51,12 @@ def ClientDetail(request, pk):
 class CustomLoginView(LoginView):
     template_name = 'uploads/login.html'
 
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+@login_required
 def upload_file(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
@@ -57,6 +67,7 @@ def upload_file(request):
         form = FileForm()
     return render(request, 'uploads/files.html')
 
+@login_required
 def file_list(request):
     
     if request.method == 'POST':
