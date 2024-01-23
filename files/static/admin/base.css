@@ -304,6 +304,8 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 table {
     border-collapse: collapse;
     border-color: var(--border-color);
+    border-top-left-radius:20px;
+    border-top-right-radius: 20px;
 }
 
 td, th {
@@ -361,6 +363,8 @@ thead th {
     line-height: normal;
     text-transform: uppercase;
     background: var(--darkened-bg);
+    border-top-left-radius:20px;
+    border-top-right-radius: 20px;
 }
 
 thead th a:link, thead th a:visited {
@@ -917,8 +921,8 @@ a.deletelink:focus, a.deletelink:hover {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    background: var(--header-bg);
-    color: var(--header-color);
+    background: #003032;
+    color: white;
     overflow: hidden;
 }
 

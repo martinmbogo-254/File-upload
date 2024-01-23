@@ -3,10 +3,124 @@
 {% block extrastyle %}{{ block.super }}
 <style>
 html[data-theme="light"], :root {
-  --primary: #9774d5;
-  --secondary: #785cab;
-  --link-fg: #7c449b;
-  --link-selected-fg: #8f5bb2;
+    --primary: #003032;
+    --secondary: #013d3f;
+    --accent: #f5dd5d;
+    --primary-fg: #fff;
+
+    --body-fg: #333;
+    --body-bg: #fff;
+    --body-quiet-color: #666;
+    --body-loud-color: #000;
+
+    --header-color: #ffc;
+    --header-branding-color: var(--accent);
+    --header-bg: var(--secondary);
+    --header-link-color: var(--primary-fg);
+
+    --breadcrumbs-fg: #c4dce8;
+    --breadcrumbs-link-fg: var(--body-bg);
+    --breadcrumbs-bg: var(--primary);
+
+    --link-fg: #003032;
+    --link-hover-color: #036;
+    --link-selected-fg: #5b80b2;
+
+    --hairline-color: #e8e8e8;
+    --border-color: #ccc;
+
+    --error-fg: #ba2121;
+
+    --message-success-bg: #dfd;
+    --message-warning-bg: #ffc;
+    --message-error-bg: #ffefef;
+
+    --darkened-bg: #f8f8f8; /* A bit darker than --body-bg */
+    --selected-bg: #e4e4e4; /* E.g. selected table cells */
+    --selected-row: #ffc;
+
+    --button-fg: #fff;
+    --button-bg: var(--primary);
+    --button-hover-bg: #609ab6;
+    --default-button-bg: var(--secondary);
+    --default-button-hover-bg: #205067;
+    --close-button-bg: #747474;
+    --close-button-hover-bg: #333;
+    --delete-button-bg: #ba2121;
+    --delete-button-hover-bg: #a41515;
+
+    --object-tools-fg: var(--button-fg);
+    --object-tools-bg: var(--close-button-bg);
+    --object-tools-hover-bg: var(--close-button-hover-bg);
+
+    --font-family-primary:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        system-ui,
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-family-monospace:
+        ui-monospace,
+        Menlo,
+        Monaco,
+        "Cascadia Mono",
+        "Segoe UI Mono",
+        "Roboto Mono",
+        "Oxygen Mono",
+        "Ubuntu Monospace",
+        "Source Code Pro",
+        "Fira Mono",
+        "Droid Sans Mono",
+        "Courier New",
+        monospace,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+body {
+    margin: 20px;
+    padding: 5px;
+    font-size: 0.875rem;
+    font-family: var(--font-family-primary);
+    color: var(--body-fg);
+    background: var(--body-bg);
+}
+
+#header {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: #003032;
+    color: white;
+    overflow: hidden;
+    border-top-left-radius:20px;
+    border-top-right-radius: 20px;
+}
+thead th {
+    padding: 5px 10px;
+    line-height: normal;
+    text-transform: uppercase;
+    background: var(--darkened-bg);
+    border-top-left-radius:20px;
+    border-top-right-radius: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    border-color: var(--border-color);
+    border-top-left-radius:20px;
+    border-top-right-radius: 20px;
 }
 </style>
 {% endblock %}
